@@ -1,6 +1,7 @@
 # SQL
 ## Error 1：
-Error Code：1267. Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '='
+### Error Code：1267
+Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '='
 ### Problem：
 由於兩張表的編碼不同。JOIN 兩張表時，欄位的值無法使用 = 相互比對。
 ### Solution：
