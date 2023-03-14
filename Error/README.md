@@ -35,34 +35,28 @@ WHERE tempTable.field3=value3;
 ## Error Code：1175
 You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column. To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
 ### Problem：
-於 MSQL 更新表的資料時，（WHERE 等）條件運算式的子查詢所查詢的表不得與更新資料的表相同。
+由於 MSQL 安全模式（safe update mode）的保護，更新或刪除表的資料需使用（WHERE 等）條件運算式並且使用作為主鍵的欄位篩選符合條件的資料。
 ```SQL
 UPDATE table1 SET field1=value1, field2=value2 WHERE field_not_pk=value3;
 ```
-### Solution_1：
-於 MSQL 更新表 table1 的資料時，將最內層子查詢 table1 的結果作為暫時的表並讓外層的子查詢查詢該表。
+### Solution_1（Better）：
+更新或刪除表 table1 的資料時，（WHERE 等）條件運算式使用作為主鍵（Primary Key）的欄位篩選條件。
 ### Example_1：
 ```SQL
-UPDATE table1 SET field1=value1, field2=value2 
-WHERE field_pk IN (
-    SELECT field_pk FROM (
-        SELECT field_pk FROM table1 WHERE field3=value3
-        ) as tempTable
-    );
+UPDATE table1 SET field1=value1, field2=value2 WHERE field_pk=value3;
 ```
 ### Solution_2：
-於 MSQL 更新表 table1 的資料時，table1 內部連結（INNER JOIN）自己並將其中一張表使用 AS 另外命名，此做法可以使 MySQL 將此二表示為不同的表。
+關閉安全模式。
 ### Example_2：
 ```SQL
-UPDATE table1
-INNER JOIN table1 AS tempTable ON table1.field_pk=tempTable.field_pk
-SET table1.field1=value1, table1.field2=value2 
-WHERE tempTable.field3=value3;
+SET SQL_SAFE_UPDATES=0; -- 關閉安全模式
+UPDATE table1 SET field1=value1, field2=value2 WHERE field_not_pk=value3;
+SET SQL_SAFE_UPDATES=1; -- 開啟安全模式
 ```
 ### Reference：
 <ol>
-    <li>https://blog.csdn.net/u010657094/article/details/64439486</li>
-    <li>https://stackoverflow.com/questions/45494/mysql-error-1093-cant-specify-target-table-for-update-in-from-clause</li>
+    <li>https://stackoverflow.com/questions/11448068/mysql-error-code-1175-during-update-in-mysql-workbench</li>
+    <li>https://ucamc.com/137-mysql-workbench-error-code-1175<li>
 </ol>
 
 ## Error Code：1267
