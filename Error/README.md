@@ -17,6 +17,15 @@ WHERE field_pk IN (
         ) as tempTable
     );
 ```
+### Solution_2：
+於 MSQL 更新表 table1 的資料時，table1 內部連結（INNER JOIN）自己並將其中一張表使用 AS 另外命名，此做法可以使 MySQL 將此二表示為不同的表。
+### Example_2：
+```SQL
+UPDATE table1
+INNER JOIN table1 AS tempTable ON table1.field_pk=tempTable.field_pk
+SET table1.field1=value1, table1.field2=value2 
+WHERE tempTable.field3=value3;
+```
 ### Note：
 
 ### Reference：
