@@ -31,4 +31,5 @@ JOIN table2 ON table1.field1 COLLATE utf8mb4_general_ci = table2.field1 COLLATE 
     <li>https://ithelp.ithome.com.tw/articles/10222814 (Collation and Character set)</li>
     <li>https://dotblogs.com.tw/jimmyyu/2009/08/30/10320 (Collation)</li>
     <li>https://developer.aliyun.com/article/347339 (Collation)</li>
+    <li>https://www.geeksforgeeks.org/what-is-collation-and-character-set-in-mysql/ (the relationship between Collation and Character set)</li>
 </ol>
