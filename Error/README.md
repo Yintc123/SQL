@@ -10,7 +10,12 @@ UPDATE table1 SET field1=value1, field2=value2 WHERE field_pk IN (SELECT field_p
 於 MSQL 更新表 table1 的資料時，將最內層子查詢 table1 的結果作為暫時的表並讓外層的子查詢查詢該表。
 ### Example_1：
 ```SQL
-UPDATE table1 SET field1=value1, field2=value2 WHERE field_pk IN (SELECT field_pk FROM (SELECT field_pk FROM table1 WHERE field3=value3) as tempTable);
+UPDATE table1 SET field1=value1, field2=value2 
+WHERE field_pk IN (
+    SELECT field_pk FROM (
+        SELECT field_pk FROM table1 WHERE field3=value3
+        ) as tempTable
+    );
 ```
 ### Note：
 
