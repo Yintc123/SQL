@@ -26,8 +26,6 @@ INNER JOIN table1 AS tempTable ON table1.field_pk=tempTable.field_pk
 SET table1.field1=value1, table1.field2=value2 
 WHERE tempTable.field3=value3;
 ```
-### Note：
-
 ### Reference：
 <ol>
     <li>https://blog.csdn.net/u010657094/article/details/64439486</li>
