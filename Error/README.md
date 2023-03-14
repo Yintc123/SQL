@@ -1,10 +1,43 @@
 # SQL
 ## Error Code：1093
-Error Code: 1093. You can't specify target table 'tableName' for update in FROM clause
+You can't specify target table 'tableName' for update in FROM clause
 ### Problem：
 於 MSQL 更新表的資料時，（WHERE 等）條件運算式的子查詢所查詢的表不得與更新資料的表相同。
 ```SQL
 UPDATE table1 SET field1=value1, field2=value2 WHERE field_pk IN (SELECT field_pk FROM table1 WHERE field3=value3);
+```
+### Solution_1：
+於 MSQL 更新表 table1 的資料時，將最內層子查詢 table1 的結果作為暫時的表並讓外層的子查詢查詢該表。
+### Example_1：
+```SQL
+UPDATE table1 SET field1=value1, field2=value2 
+WHERE field_pk IN (
+    SELECT field_pk FROM (
+        SELECT field_pk FROM table1 WHERE field3=value3
+    ) as tempTable
+);
+```
+### Solution_2：
+於 MSQL 更新表 table1 的資料時，table1 內部連結（INNER JOIN）自己並將其中一張表使用 AS 另外命名，此做法可以使 MySQL 將此二表示為不同的表。
+### Example_2：
+```SQL
+UPDATE table1
+INNER JOIN table1 AS tempTable ON table1.field_pk=tempTable.field_pk
+SET table1.field1=value1, table1.field2=value2 
+WHERE tempTable.field3=value3;
+```
+### Reference：
+<ol>
+    <li>https://blog.csdn.net/u010657094/article/details/64439486</li>
+    <li>https://stackoverflow.com/questions/45494/mysql-error-1093-cant-specify-target-table-for-update-in-from-clause</li>
+</ol>
+
+## Error Code：1175
+You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column. To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
+### Problem：
+於 MSQL 更新表的資料時，（WHERE 等）條件運算式的子查詢所查詢的表不得與更新資料的表相同。
+```SQL
+UPDATE table1 SET field1=value1, field2=value2 WHERE field_not_pk=value3;
 ```
 ### Solution_1：
 於 MSQL 更新表 table1 的資料時，將最內層子查詢 table1 的結果作為暫時的表並讓外層的子查詢查詢該表。
