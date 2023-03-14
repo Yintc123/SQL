@@ -1,4 +1,18 @@
 # SQL
+## Error Code：1093
+Error Code: 1093. You can't specify target table 'tableName' for update in FROM clause
+### Problem：
+
+### Solution：
+
+### Example：
+
+### Note：
+
+### Reference：
+<ol>
+</ol>
+
 ## Error Code：1267
 Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,IMPLICIT) for operation '='
 ### Problem：
