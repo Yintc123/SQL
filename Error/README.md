@@ -2,15 +2,22 @@
 ## Error Code：1093
 Error Code: 1093. You can't specify target table 'tableName' for update in FROM clause
 ### Problem：
-
-### Solution：
-
-### Example：
-
+於 MSQL 更新表的資料時，（WHERE 等）條件運算式的子查詢所查詢的表不得與更新資料的表相同。
+```SQL
+UPDATE table1 SET field1=value1, field2=value2 WHERE field_pk IN (SELECT field_pk FROM table1 WHERE field3=value3);
+```
+### Solution_1：
+於 MSQL 更新表 table1 的資料時，將最內層子查詢 table1 的結果作為暫時的表並讓外層的子查詢查詢該表。
+### Example_1：
+```SQL
+UPDATE table1 SET field1=value1, field2=value2 WHERE field_pk IN (SELECT field_pk FROM (SELECT field_pk FROM table1 WHERE field3=value3) as tempTable);
+```
 ### Note：
 
 ### Reference：
 <ol>
+    <li>https://blog.csdn.net/u010657094/article/details/64439486</li>
+    <li>https://stackoverflow.com/questions/45494/mysql-error-1093-cant-specify-target-table-for-update-in-from-clause</li>
 </ol>
 
 ## Error Code：1267
