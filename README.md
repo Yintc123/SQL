@@ -24,6 +24,7 @@ JOIN table2 ON table1.field1 COLLATE utf8mb4_general_ci = table2.field1 COLLATE 
     <li>https://dotblogs.com.tw/Eyelash/2021/05/07/192212</li>
     <li>https://dev.mysql.com/doc/refman/8.0/en/charset-collate.html (COLLATE)</li>
     <li>https://cloud.tencent.com/developer/article/1366841 (COLLATE)</li>
+    <li>https://www.cadch.com/modules/news/article.php?storyid=198 (utf8mb4 Collation)</li>
     <li>https://www.cnblogs.com/amyzhu/p/9595665.html (utf8mb4 Collation)</li>
     <li>https://khiav223577.github.io/blog/2019/06/30/MySQL-%E7%B7%A8%E7%A2%BC%E6%8C%91%E9%81%B8%E8%88%87%E5%B7%AE%E7%95%B0%E6%AF%94%E8%BC%83/ (utf8mb4)</li>
     <li>https://ithelp.ithome.com.tw/articles/10222814 (Collation and Character set)</li>
