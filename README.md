@@ -17,11 +17,11 @@ JOIN table2 ON table1.field1 COLLATE utf8mb4_general_ci = table2.field1 COLLATE 
 * utf8mb4_unicode_ci：utf8mb4 的 Collation。基於標準的 unicode 排序及比較，能夠於各種語言間精準的排序。
 * utf8mb4_0900_ai_ci：utf8mb4 的 Collation，為 MySQL 預設 utf8mb4 的 collation。基於標準的 unicode 排序及比較，能夠於各種語言間精準的排序，並且較 utf8mb4_general_ci 更為優化的 collation。
 * utf8mb4：對 Unicode 的編碼。於 MySQL 中，utf8mb4 為正式的 utf8 編碼，使用四個位元組儲存。（於 MySQL 中，utf8 實為 utf8mb3 使用三個位元組儲存）
-* Collation：定序。資料庫預先定義處理字元集（Character set）的一套規則，包含描述字元、排序字元及比較字元。
+* Collation：定序。資料庫預先定義處理字元集（Character set）的一套規則，包含描述字元、排序字元及比較字元。（查詢 Collation 的語法如下）
 ```SQL
 SHOW COLLATION;
 ```
-* Character set：字元集。一組包含（多個）字元符號及其對應的編碼。
+* Character set：字元集。一組包含（多個）字元符號及其對應的編碼。（查詢 Character set 的語法如下）
 ```SQL
 SHOW CHARACTER SET;
 ```
