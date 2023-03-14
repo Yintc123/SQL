@@ -56,7 +56,7 @@ SET SQL_SAFE_UPDATES=1; -- 開啟安全模式
 ### Reference：
 <ol>
     <li>https://stackoverflow.com/questions/11448068/mysql-error-code-1175-during-update-in-mysql-workbench</li>
-    <li>https://ucamc.com/137-mysql-workbench-error-code-1175<li>
+    <li>https://ucamc.com/137-mysql-workbench-error-code-1175</li>
 </ol>
 
 ## Error Code：1267
