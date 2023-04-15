@@ -118,7 +118,7 @@ SELECT REPLACE("SQL Tutorial", "SQL", "HTML") -- output：HTML Tutorial
 計算以逗號分隔的字母數量。
 ```SQL
 SET @str='a,b,c,d,e,f';
-SELECT (LENGTH(@str)-LENGTH(REPLACE(@str, ',', '')) + 1) AS result;
+SELECT (LENGTH(@str)-LENGTH(REPLACE(@str, ',', '')) + 1) AS result; -- output：6
 ```
 ### Reference
 <ol>
