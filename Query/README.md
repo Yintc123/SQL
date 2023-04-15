@@ -92,7 +92,7 @@ SELECT DATE_ADD(NOW(), INTERVAL 8 HOUR);
 ```SQL
 SELECT DISTINCT column1, column2 FROM table1;
 SELECT DISTINCT (column1), column2 FROM table1; -- 查詢結果與上述 SQL 相同
-SELECT DISTINCT (column1, column2) FROM table1; -- Error，括號內僅能放置一欄位
+SELECT DISTINCT (column1, column2) FROM table1; -- Error，DISTINCT 的括號內僅能放置一欄位
 ```
 ### 搭配聚合函數使用
 可以不用放置於 SELECT 之後。
