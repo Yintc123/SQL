@@ -43,11 +43,11 @@ SELECT MONTH(NOW());
 ```SQL
 SELECT YEAR(NOW());
 ```
-#### 自訂需要的時間資訊
+### 自訂需要的時間資訊
 ```SQL
 SELECT DATE_FORMAT(NOW(), "%Y-%m-%d") -- YYYY-MM-DD
 ```
-##### Tips
+#### Tips
 以 2023-04-15 13:59:20 為例：
 - %Y（YYYY）：2023
 - %y（YY）：23
