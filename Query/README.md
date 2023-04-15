@@ -108,3 +108,22 @@ SELECT COUNT(DISTINCT column1) FROM table1; -- 計算 column1 不重複值的數
     <li>https://stackoverflow.com/questions/7250566/mysql-select-distinct</li>
     <li>https://stackoverflow.com/questions/1443069/mysql-error-when-trying-to-get-unique-values-using-distinct-together-with-left-j</li>
 </ol>
+
+## REPLACE
+REPLACE(string, from_string, new_string)：取代指定字串。
+```SQL
+SELECT REPLACE("SQL Tutorial", "SQL", "HTML") -- output：HTML Tutorial
+```
+### Practice
+計算以逗號分隔的字母數量。
+```SQL
+SET @str='a,b,c,d,e,f';
+SELECT (LENGTH(@str)-LENGTH(REPLACE(@str, ',', '')) + 1) AS result;
+```
+### Reference
+<ol>
+    <li>https://www.w3schools.com/sql/func_mysql_replace.asp</li>
+    <li>https://www.geeksforgeeks.org/replace-function-in-mysql/</li>
+    <li>https://stackoverflow.com/questions/5956993/mysql-string-replace</li>
+    <li>https://caloskao.org/mysql-string-replace-concat/</li>
+</ol>
