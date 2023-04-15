@@ -84,3 +84,27 @@ SELECT DATE_ADD(NOW(), INTERVAL 8 HOUR);
     <li>https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_convert-tz</li>
     <li>http://tw.gitbook.net/mysql/mysql_function_convert_tz.html</li>
 </ol>
+
+## DISTINCT：
+去除整行重複的資料。
+### SELECT DISTINCT
+查詢不重複的資料，只能放置於 SELECT 之後且括號不影響查詢結果。
+```SQL
+SELECT DISTINCT column1, column2 FROM table1;
+SELECT DISTINCT (column1), column2 FROM table1; -- 查詢結果與上述 SQL 相同
+SELECT DISTINCT (column1, column2) FROM table1; -- Error，括號內僅能放置一欄位
+```
+### 搭配聚合函數使用
+可以不用放置於 SELECT 之後。
+```SQL
+SELECT COUNT(DISTINCT column1) FROM table1; -- 計算 column1 不重複值的數量
+```
+### Reference
+<ol>
+    <li>https://www.twle.cn/c/yufei/mysqlfav/mysqlfav-basic-distinct.html</li>
+    <li>https://www.twle.cn/c/yufei/mysqlfav/mysqlfav-basic-distinct2.html</li>
+    <li>https://www.yiibai.com/mysql/distinct.html</li>
+    <li>https://www.w3schools.com/sql/sql_distinct.asp</li>
+    <li>https://stackoverflow.com/questions/7250566/mysql-select-distinct</li>
+    <li>https://stackoverflow.com/questions/1443069/mysql-error-when-trying-to-get-unique-values-using-distinct-together-with-left-j</li>
+</ol>
