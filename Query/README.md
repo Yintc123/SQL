@@ -43,11 +43,28 @@ SELECT MONTH(NOW());
 ```SQL
 SELECT YEAR(NOW());
 ```
+#### 自訂需要的時間資訊
+```SQL
+SELECT DATE_FORMAT(NOW(), "%Y-%m-%d") -- YYYY-MM-DD
+```
+##### Tips
+以 2023-04-15 13:59:20 為例：
+- %Y（YYYY）：2023
+- %y（YY）：23
+- %M（english_month_name）：April
+- %m（MM）：04
+- %D（english_date）：15th
+- %H（24 hours）：13
+- %h（12 hours）：1
+- %i（minute）：59
+- %s（second）：20
 #### Reference
 <ol>
     <li>https://www.w3schools.com/sql/func_mysql_month.asp</li>
     <li>https://www.fooish.com/sql/date.html</li>
     <li>https://www.w3school.com.cn/sql/sql_dates.asp</li>
+    <li>https://stackoverflow.com/questions/9032047/how-to-select-only-date-from-a-datetime-field-in-mysql</li>
+    <li>https://www.fooish.com/sql/mysql-date_format-function.html</li>
 </ol>
 
 ### 轉換時區
