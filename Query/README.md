@@ -17,7 +17,7 @@ AND COLUMN_NAME = 'fieldName';
     <li>https://stackoverflow.com/questions/7617412/discover-collation-of-a-mysql-column</li>
 </ol>
 
-## 查詢時間欄位：
+## 查詢時間資訊：
 ### 僅顯示需要的時間資訊
 - SECOND()：僅顯示秒的時間資訊（SS）。
 ```SQL
