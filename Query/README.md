@@ -58,7 +58,7 @@ SELECT DATE_FORMAT(NOW(), "%Y-%m-%d") -- YYYY-MM-DD
 - %h（12 hours）：1
 - %i（minute）：59
 - %s（second）：20
-#### Reference
+### Reference
 <ol>
     <li>https://www.w3schools.com/sql/func_mysql_month.asp</li>
     <li>https://www.fooish.com/sql/date.html</li>
@@ -79,7 +79,7 @@ DATE_ADD(datetime, interval 8 HOUR)：將時間資訊加上 8 小時。
 ```SQL
 SELECT DATE_ADD(NOW(), INTERVAL 8 HOUR);
 ```
-#### Reference
+### Reference
 <ol>
     <li>https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html#function_convert-tz</li>
     <li>http://tw.gitbook.net/mysql/mysql_function_convert_tz.html</li>
