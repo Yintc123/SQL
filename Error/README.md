@@ -71,7 +71,7 @@ Illegal mix of collations (utf8mb4_unicode_ci,IMPLICIT) and (utf8mb4_general_ci,
 SELECT table1.field2, table2.field2 FROM table1 
 JOIN table2 ON table1.field1 COLLATE utf8mb4_general_ci = table2.field1 COLLATE utf8mb4_general_ci;
 ```
-### Note
+### Note：
 * Collate：設定 expression-level 的 Collation 為 utf8mb4_general_ci。
 * utf8mb4_general_ci：utf8mb4 的 Collation。較簡易也較快（與 utf8mb4_unicode_ci 對比）的 Collation。
 * utf8mb4_unicode_ci：utf8mb4 的 Collation。基於標準的 unicode 排序及比較，能夠於各種語言間精準的排序。
@@ -101,4 +101,36 @@ SHOW CHARACTER SET; -- 查詢 Character set 的 SQL 語法
     <li>https://dev.mysql.com/doc/refman/8.0/en/charset-general.html (the relationship between Collation and Character set)</li>
     <li>https://dev.mysql.com/doc/refman/8.0/en/charset-mysql.html (the relationship between Collation and Character set)</li>
     <li>https://dev.mysql.com/doc/refman/8.0/en/adding-collation.html (Weight_string)</li>
+</ol>
+
+## Error Code：3546
+@@GLOBAL.GTID_PURGED cannot be changed: the added gtid set must not overlap with @@GLOBAL.GTID_EXECUTED
+### Problem：
+輸入（import）資料庫產生的錯誤。GTID_PURGED 的值設置失敗，加入 GTID 不得與 GTID_EXECUTED 重疊。
+### Solution：
+<a href="https://dev.mysql.com/doc/refman/5.7/en/reset-master.html">RESET MASTER</a> 指令會刪除所有的二進制日誌並且重置 @@GLOBAL.GTID_PURGED 和 @@GLOBAL.GTID_EXECUTED 的值為空字串。
+```SQL
+RESET MASTER;
+```
+### Note：
+- <a href="https://dev.mysql.com/doc/refman/8.0/en/replication-gtids-concepts.html">Global Transaction Identifier（GTID）</a>：全域交易識別碼，由 master_db 的 ID 和 Transaction ID 組成，主要的資料庫（Master）每一次交易（Transaction）產生的唯一識別碼並寫入二進制日誌（Binary log）。此 ID 於資料庫群集內也是唯一值，確保 master 與 slaves 的同步性。GTID 有以下兩個特性：
+    1. 全域唯一值：slave 可以比對自己的 Transaction ID 與當前的 GTID 的差異，再與 master 進行資料同步。
+    2. 逐步遞增：可以透過 GTID 的 Transaction ID 判斷交易順序。如 master 當機可以透過 GTID 判斷資料庫數據狀態與 master 最接近的 slave。
+```SQL
+GTID = source_id:transaction_id
+example = 3E11FA47-71CA-11E1-9E33-C80AA9429562:23 -- 此 GTID 為第 23 筆交易
+```
+- GTID Sets：GTID 數組。
+- GTID_EXECUTED：一套 GTID 數組，已執行的 GTID 集合。
+```SQL
+SELECT @@GLOBAL.GTID_EXECUTED;
+```
+- GTID_PURGED：一套 GTID 數組，從二進制日誌刪除的 GTID 集合，為 GTID_EXECUTED 的子集合。GTID_PURGED 不再用於複製或同步 master。
+```SQL
+SELECT @@GLOBAL.GTID_PURGED;
+```
+### Reference：
+<ol>
+    <li>https://stackoverflow.com/questions/38123263/cloud-sql-database-export-import-issue</li>
+    <li>https://blog.csdn.net/HD243608836/article/details/109578131</li>
 </ol>
