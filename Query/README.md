@@ -1,5 +1,5 @@
 # QUERY
-## 查詢 collation：
+## Collation：
 查詢特定欄位的 <a href="https://github.com/Yintc123/SQL/tree/main/Error#note">Collation</a>。
 ### Method_1（better）
 ```SQL
@@ -17,7 +17,7 @@ AND COLUMN_NAME = 'fieldName';
     <li>https://stackoverflow.com/questions/7617412/discover-collation-of-a-mysql-column</li>
 </ol>
 
-## 查詢時間資訊：
+## 時間資訊：
 ### 僅顯示需要的時間資訊
 - SECOND()：僅顯示秒的時間資訊（SS）。
 ```SQL
